@@ -43,7 +43,7 @@ app.Run();
 
 void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
-
+    //for SLAB
     services.AddTransient<ISlabsRepo, SlabsRepo>(provider =>
     new SlabsRepo(configuration.GetConnectionString("YourConnectionStringName")));
 
@@ -68,6 +68,12 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     new UsersRepo(configuration.GetConnectionString("YourConnectionStringName")));
 
     services.AddTransient<IUsersService, UsersService>();
+
+    //for CMS
+    services.AddTransient<IcmsRepo,CmsRepo>(provider =>
+    new CmsRepo(configuration.GetConnectionString("YourConnectionStringName1")));
+
+    services.AddTransient<IcmsServices, CmsServices>();
 
     services.AddControllers()
     .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
