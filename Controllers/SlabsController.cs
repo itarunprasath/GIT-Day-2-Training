@@ -22,6 +22,12 @@ namespace TrainingDay4.Controllers
         {
             return Ok(_slabsServie .GetSlabs(versionid));
         }
+
+        [HttpGet]
+        public IActionResult Saidatul007WelcomeMessage()
+        {
+            return Ok("Welcome Onboard SaidatulNadirah007");
+        }
         [HttpGet]
         public IActionResult AziraWelcomeMessage()
         {
