@@ -22,5 +22,11 @@ namespace TrainingDay4.Controllers
         {
             return Ok(_slabsServie .GetSlabs(versionid));
         }
+        [HttpGet]
+        public IActionResult AziraWelcomeMessage()
+        {
+            return Ok("welcome to Azira demo");
+        }
+
     }
 }
