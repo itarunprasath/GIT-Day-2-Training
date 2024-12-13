@@ -1,6 +1,8 @@
 using aznira5.Repository;
 using aznira5.Services;
 using System.Text.Json.Serialization;
+using Task1_Score.Repository;
+using Task1_Score.Services;
 using TrainingDay4.Repository;
 using TrainingDay4.Services;
 
@@ -46,6 +48,11 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     new SlabsRepo(configuration.GetConnectionString("YourConnectionStringName")));
 
     services.AddTransient<ISlabsServie, SlabsServie>();
+
+    services.AddTransient<IScoreRepo, ScoreRepo>(provider =>
+       new ScoreRepo(configuration.GetConnectionString("YourConnectionStringNames")));
+
+    services.AddTransient<IScoreService, ScoreService>();
 
     services.AddTransient<IRCRepo, RCRepo>(provider =>
     new RCRepo(configuration.GetConnectionString("YourConnectionStringName")));
