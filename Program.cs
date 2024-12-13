@@ -1,3 +1,5 @@
+using aznira5.Repository;
+using aznira5.Services;
 using System.Text.Json.Serialization;
 using TrainingDay4.Repository;
 using TrainingDay4.Services;
@@ -45,8 +47,14 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 
     services.AddTransient<ISlabsServie, SlabsServie>();
 
+    services.AddTransient<IUserRepo, UserRepo>(provider =>
+    new UserRepo(configuration.GetConnectionString("YourConnectionStringName")));
+
+    services.AddTransient<IUserService, UserService>();
+
     services.AddControllers()
     .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
     // Add other services here
 }
+
