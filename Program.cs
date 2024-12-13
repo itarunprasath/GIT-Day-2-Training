@@ -52,6 +52,11 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 
     services.AddTransient<IUserService, UserService>();
 
+    services.AddTransient<IUsersRepo, UsersRepo>(provider =>
+    new UsersRepo(configuration.GetConnectionString("YourConnectionStringName")));
+
+    services.AddTransient<IUsersService, UsersService>();
+
     services.AddControllers()
     .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
