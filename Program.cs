@@ -66,5 +66,10 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
     // Add other services here
+
+    services.AddTransient<ITestsuRepo, TestsuRepo>(provider =>
+    new TestsuRepo(configuration.GetConnectionString("YourConnectionStringName")));
+
+    services.AddTransient<ITestsuService, TestsuService>();
 }
 
