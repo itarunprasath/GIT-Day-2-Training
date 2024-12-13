@@ -47,6 +47,11 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 
     services.AddTransient<ISlabsServie, SlabsServie>();
 
+    services.AddTransient<IRCRepo, RCRepo>(provider =>
+    new RCRepo(configuration.GetConnectionString("YourConnectionStringName")));
+
+    services.AddTransient<IRCService, RCService>();
+
     services.AddTransient<IUserRepo, UserRepo>(provider =>
     new UserRepo(configuration.GetConnectionString("YourConnectionStringName")));
 
