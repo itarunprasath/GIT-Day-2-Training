@@ -1,6 +1,8 @@
 using aznira5.Repository;
 using aznira5.Services;
 using System.Text.Json.Serialization;
+using Task1_CMS.Repository;
+using Task1_CMS.Service;
 using Task1_Score.Repository;
 using Task1_Score.Services;
 using TrainingDay4.Repository;
