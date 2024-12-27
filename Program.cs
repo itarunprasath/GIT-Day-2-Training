@@ -52,7 +52,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddTransient<ISlabsServie, SlabsServie>();
 
     services.AddTransient<IScoreRepo, ScoreRepo>(provider =>
-       new ScoreRepo(configuration.GetConnectionString("YourConnectionStringNames")));
+    new ScoreRepo(configuration.GetConnectionString("YourConnectionStringNames")));
 
     services.AddTransient<IScoreService, ScoreService>();
 
@@ -86,5 +86,11 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     new TestsuRepo(configuration.GetConnectionString("YourConnectionStringName")));
 
     services.AddTransient<ITestsuService, TestsuService>();
+
+    services.AddTransient<IPrjInfoRepo, PrjInfoRepo>(provider =>
+    new PrjInfoRepo(configuration.GetConnectionString("YourConnectionStringNames")));
+
+    services.AddTransient<IPrjInfoService, PrjInfoService>();
+
 }
 
