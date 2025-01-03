@@ -3,6 +3,8 @@ using aznira5.Services;
 using System.Text.Json.Serialization;
 using Task1_CMS.Repository;
 using Task1_CMS.Service;
+using Task1_ContractorV1.Repository;
+using Task1_ContractorV1.Services;
 using Task1_Score.Repository;
 using Task1_Score.Services;
 using TrainingDay4.Repository;
@@ -45,6 +47,12 @@ app.Run();
 
 void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
+    //for ContractorCIDB 
+    services.AddTransient<IContractorRepo, ContractorRepo>(provider =>
+    new ContractorRepo(configuration.GetConnectionString("YourConnectionStringNamess")));
+
+    services.AddTransient<IContractorService, ContractorService>();
+
     //for SLAB
     services.AddTransient<ISlabsRepo, SlabsRepo>(provider =>
     new SlabsRepo(configuration.GetConnectionString("YourConnectionStringName")));
